@@ -88,16 +88,16 @@ public class LoginActivity extends AppCompatActivity {
             new android.os.Handler().postDelayed(
                     new Runnable() {
                         public void run() {
-                            LoginUser();
+                            loginUser();
                         }
                     }, 3000);
         }
     }
 
-    public void LoginUser(){
+    public void loginUser(){
         final Map<String, String> parameters = new HashMap<>();
 
-        parameters.put("emailAddress",userBean.getEmailAddress());
+        parameters.put("email",userBean.getEmailAddress());
         parameters.put("password",userBean.getPassword());
 
         MyStringRequest request = new MyStringRequest(parameters, Request.Method.POST, EndPoints.LOGIN_USER,
