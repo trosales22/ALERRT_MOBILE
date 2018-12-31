@@ -61,8 +61,6 @@ public class SignUpActivity extends AppCompatActivity {
                 frmRegisterAccount_txtMobileNumber
         };
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         frmRegisterAccount_btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,6 +79,13 @@ public class SignUpActivity extends AppCompatActivity {
                                 }
                             }, 3000);
                 }
+            }
+        });
+
+        btnGoToLoginPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
             }
         });
     }
