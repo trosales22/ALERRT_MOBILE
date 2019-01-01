@@ -126,7 +126,7 @@ public class NewsfeedFragment extends Fragment {
 
                                             topicPostID = post.getString("ID");
                                             topicPosterUserID = post.getString("TopicPostedBy");
-                                            topicBean.setTopicPostedBy(posterInfo_object.getString("Firstname") + " " + posterInfo_object.getString("Lastname"));
+                                            topicBean.setTopicPostedBy(posterInfo_object.getString("Fullname"));
                                             topicBean.setTopicDateAndTimePosted(post.getString("TopicDateAndTimePosted"));
                                             topicBean.setTopicTitle(post.getString("TopicTitle"));
                                             topicBean.setTopicImage(post.getString("TopicImage"));
