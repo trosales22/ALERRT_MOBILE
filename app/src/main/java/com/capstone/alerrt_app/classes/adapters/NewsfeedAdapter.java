@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.capstone.alerrt_app.R;
-import com.capstone.alerrt_app.activity.HomeActivity;
+import com.capstone.alerrt_app.activity.CommentsActivity;
 import com.capstone.alerrt_app.classes.data_objects.NewsfeedDO;
 import com.squareup.picasso.Picasso;
 
@@ -64,7 +64,7 @@ public class NewsfeedAdapter extends RecyclerView.Adapter<NewsfeedAdapter.ViewHo
             public void onClick(View v) {
                 topicPostID = newsfeedDO.getTopicPostID();
 
-                view.getContext().startActivity(new Intent(view.getContext(), HomeActivity.class));
+                view.getContext().startActivity(new Intent(view.getContext(), CommentsActivity.class));
             }
         });
     }

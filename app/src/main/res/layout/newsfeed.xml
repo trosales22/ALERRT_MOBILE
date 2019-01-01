@@ -33,7 +33,7 @@
                     android:layout_marginBottom="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:src="@drawable/logo" />
+                    android:src="@mipmap/ic_launcher_round" />
 
                 <RelativeLayout
                     android:id="@+id/relativeLayout_posterInfo"
@@ -112,10 +112,10 @@
                     android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Comment"
+                    android:text="View Comments"
                     android:textColor="#FFFFFF"
                     android:textSize="12dp"
-                    android:drawableLeft="@drawable/ic_post"/>
+                    android:drawableLeft="@drawable/ic_visible"/>
 
             </LinearLayout>
 

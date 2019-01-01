@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if(SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
-            startActivity(new Intent(this, HomeActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
             return;
         }
 
@@ -112,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
                             SharedPrefManager.getInstance(getApplicationContext())
                                     .userLogin(userBean.getEmailAddress());
 
-                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             finish();
                         }
                     }

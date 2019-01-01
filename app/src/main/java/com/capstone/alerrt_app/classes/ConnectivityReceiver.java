@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.capstone.alerrt_app.activity.HomeActivity;
+import com.capstone.alerrt_app.activity.MainActivity;
 
 public class ConnectivityReceiver extends BroadcastReceiver {
     public ConnectivityReceiver() {
@@ -27,9 +27,9 @@ public class ConnectivityReceiver extends BroadcastReceiver {
                 // Check internet connection and according to state change the
                 // text of activity by calling method
                 if (networkInfo != null && networkInfo.isConnected()) {
-                    new HomeActivity().isConnected = true;
+                    new MainActivity().isConnected = true;
                 } else {
-                    new HomeActivity().isConnected = false;
+                    new MainActivity().isConnected = false;
                 }
             }
         }catch (Exception e) {

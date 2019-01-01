@@ -4,16 +4,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -43,100 +38,78 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.capstone.alerrt_app.R;
 import com.capstone.alerrt_app.classes.EndPoints;
-import com.capstone.alerrt_app.classes.MyApplication;
 import com.capstone.alerrt_app.classes.SharedPrefManager;
+import com.capstone.alerrt_app.classes.adapters.TabPagerAdapter;
 import com.capstone.alerrt_app.classes.beans.UserBean;
 import com.capstone.alerrt_app.classes.requests.CacheRequest;
 import com.capstone.alerrt_app.classes.requests.MySingleton;
-import com.capstone.alerrt_app.fragment.NewsfeedFragment;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
 
-public class HomeActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private NavigationView navigationView;
-    private View header;
     private TextView txtLoggedInUser_fullname,txtLoggedInUser_email;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-    private int[] tabIcons = {
-            R.drawable.ic_newsfeed,
-            R.drawable.ic_place,
-            R.drawable.ic_notif
-    };
-
     UserBean userBean = new UserBean();
     public static String userID,userEmailAddress;
     public static boolean isConnected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        try {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_home);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-            if (!SharedPrefManager.getInstance(this).isLoggedIn()) {
-                finish();
-                startActivity(new Intent(this, LoginActivity.class));
-            }
-
-            Toolbar toolbar = findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
-
-            // At activity startup we manually check the internet status and change the text status
-            ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-            if (networkInfo != null && networkInfo.isConnected()) {
-                isConnected = true;
-            } else {
-                isConnected = false;
-            }
-
-            FloatingActionButton fab = findViewById(R.id.fab);
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                }
-            });
-
-            DrawerLayout drawer = findViewById(R.id.drawer_layout);
-            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-            drawer.addDrawerListener(toggle);
-            toggle.syncState();
-
-            navigationView = findViewById(R.id.nav_view);
-            navigationView.setNavigationItemSelectedListener(this);
-
-            header = navigationView.getHeaderView(0);
-
-            txtLoggedInUser_fullname = header.findViewById(R.id.txtLoggedInUser_fullname);
-            txtLoggedInUser_email = header.findViewById(R.id.txtLoggedInUser_email);
-
-            viewPager = findViewById(R.id.viewpager);
-            setupViewPager(viewPager);
-            viewPager.getAdapter().notifyDataSetChanged();
-
-            tabLayout = findViewById(R.id.tabs);
-            tabLayout.setupWithViewPager(viewPager);
-            tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#EEEEEE"));
-            //tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-
-            tabLayout.setTabMode(TabLayout.MODE_FIXED);
-
-            //setupTabIcons();
-            showInfoOfLoggedInUser();
-        }catch(Exception ex){
-            Log.e("HomeActivity Error", ex.toString());
+        if (!SharedPrefManager.getInstance(this).isLoggedIn()) {
+            finish();
+            startActivity(new Intent(this, LoginActivity.class));
         }
+
+        // At activity startup we manually check the internet status and change the text status
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            isConnected = true;
+        } else {
+            isConnected = false;
+        }
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        TabLayout tabLayout = findViewById(R.id.tabs);
+        ViewPager viewPager =  findViewById(R.id.viewpager);
+
+        TabPagerAdapter tabPagerAdapter = new TabPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(tabPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+
+        FloatingActionButton fab = findViewById(R.id.fab_addPost);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), AddPostActivity.class));
+            }
+        });
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        View header = navigationView.getHeaderView(0);
+
+        txtLoggedInUser_fullname = header.findViewById(R.id.txtLoggedInUser_fullname);
+        txtLoggedInUser_email = header.findViewById(R.id.txtLoggedInUser_email);
+
+        showInfoOfLoggedInUser();
     }
 
     @Override
@@ -152,7 +125,7 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
+        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -184,7 +157,7 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_account_settings) {
             //show account settings page
         } else if (id == R.id.nav_about) {
-            //show about page
+            startActivity(new Intent(getApplicationContext(), AboutActivity.class));
         } else if (id == R.id.nav_logout) {
             showLogoutPrompt("Are you sure you want to logout?", "You cannot undo this action.");
         }
@@ -192,54 +165,6 @@ public class HomeActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    private void setupTabIcons() {
-        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
-        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
-        tabLayout.getTabAt(2).setIcon(tabIcons[2]);
-    }
-
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-
-        if(isConnected){
-            adapter.addFrag(new NewsfeedFragment(), "Newsfeed");
-            adapter.addFrag(new NewsfeedFragment(), "Place");
-            adapter.addFrag(new NewsfeedFragment(), "Notifications");
-        }
-
-        viewPager.setAdapter(adapter);
-    }
-
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
-
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        public void addFrag(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            //return mFragmentTitleList.get(position);
-            return null;
-        }
     }
 
     public void showLogoutPrompt(String title, String message) {
@@ -267,12 +192,12 @@ public class HomeActivity extends AppCompatActivity
 
     public void showInfoOfLoggedInUser(){
         try{
-            final ProgressDialog progressDialog = new ProgressDialog(HomeActivity.this);
+            final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
             progressDialog.setMessage("Loading data...");
             progressDialog.setCancelable(false);
             progressDialog.show();
 
-            CacheRequest request = new CacheRequest(null, Request.Method.POST, EndPoints.LOGGED_IN_USER_INFO + SharedPrefManager.getInstance(HomeActivity.this).getEmailAddressOrUsername(),
+            CacheRequest request = new CacheRequest(null, Request.Method.POST, EndPoints.LOGGED_IN_USER_INFO + SharedPrefManager.getInstance(MainActivity.this).getEmailAddressOrUsername(),
                     new Response.Listener<NetworkResponse>() {
                         @Override
                         public void onResponse(NetworkResponse response) {
@@ -320,27 +245,15 @@ public class HomeActivity extends AppCompatActivity
                                 message = "Connection TimeOut! Please check your internet connection.";
                             }
 
-                            Toast.makeText(HomeActivity.this, message, Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
                         }
                     }
             );
 
             request.setRetryPolicy(new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-            MySingleton.getInstance(HomeActivity.this).addToRequestQueue(request);
+            MySingleton.getInstance(MainActivity.this).addToRequestQueue(request);
         }catch(Exception ex){
             Log.e("Error Message", ex.toString());
         }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        MyApplication.activityPaused();// On Pause notify the Application
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        MyApplication.activityResumed();// On Resume notify the Application
     }
 }

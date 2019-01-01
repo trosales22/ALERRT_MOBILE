@@ -1,6 +1,7 @@
 package com.capstone.alerrt_app.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -76,11 +77,13 @@ public class NewsfeedFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         newsfeedList = new ArrayList<>();
         parameters = new HashMap<>();
+
+        showAllPost(EndPoints.SHOW_ALL_POST, parameters);
 
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -104,7 +107,7 @@ public class NewsfeedFragment extends Fragment {
             adapter_emptyRecyclerView = new EmptyRecyclerViewAdapter();
             recyclerView_newsfeed.setAdapter(adapter_emptyRecyclerView);
 
-            MyStringRequest request = new MyStringRequest(params, Request.Method.POST, url,
+            MyStringRequest request = new MyStringRequest(params, Request.Method.GET, url,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -124,19 +127,22 @@ public class NewsfeedFragment extends Fragment {
                                         for(int b = 0; b < posterInfo_array.length(); b++){
                                             JSONObject posterInfo_object = posterInfo_array.getJSONObject(b);
 
-                                            topicPostID = post.getString("ID");
+                                            topicPostID = post.getString("TopicID");
                                             topicPosterUserID = post.getString("TopicPostedBy");
                                             topicBean.setTopicPostedBy(posterInfo_object.getString("Fullname"));
                                             topicBean.setTopicDateAndTimePosted(post.getString("TopicDateAndTimePosted"));
                                             topicBean.setTopicTitle(post.getString("TopicTitle"));
                                             topicBean.setTopicImage(post.getString("TopicImage"));
+                                            topicBean.setTopicAttention(post.getString("TopicAttention"));
+                                            topicBean.setTopicStatus(post.getString("TopicStatus"));
+                                            topicBean.setTopicLocationAddress(post.getString("TopicLocationAddress"));
 
                                             NewsfeedDO newsfeedDO = new NewsfeedDO(
                                                     topicPostID,
                                                     topicPosterUserID,
                                                     topicBean.getTopicPostedBy(),
                                                     topicBean.getTopicDateAndTimePosted(),
-                                                    topicBean.getTopicLocation(),
+                                                    topicBean.getTopicLocationAddress(),
                                                     topicBean.getTopicTitle(),
                                                     topicBean.getTopicImage(),
                                                     "Attention: " + topicBean.getTopicAttention() + "\nStatus: " + topicBean.getTopicStatus()
