@@ -81,16 +81,28 @@
             android:name=".activity.AddPostActivity"
             android:configChanges="orientation|screenSize"
             android:label="Add Post | ALERRT"
-            android:noHistory="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Add.Dialog" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.AboutActivity"
             android:configChanges="orientation|screenSize"
             android:label="About | ALERRT"
             android:noHistory="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Add.Dialog"/>
+            android:theme="@style/Add.Dialog" />
+        <activity
+            android:name=".activity.AgencyActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="Registered Agencies | ALERRT"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ViewSpecificAgencyActivity"
+            android:configChanges="orientation|screenSize"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

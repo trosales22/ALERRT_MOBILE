@@ -5,16 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activity.CommentsActivity"
-    tools:showIn="@layout/activity_comments">
+    tools:context=".activity.AgencyActivity"
+    tools:showIn="@layout/activity_agency">
 
     <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipeToRefresh_comments"
+        android:id="@+id/swipeToRefresh_agency"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView_comments"
+            android:id="@+id/recyclerView_agency"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </android.support.v7.widget.RecyclerView>

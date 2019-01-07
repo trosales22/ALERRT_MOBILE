@@ -151,11 +151,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_registered_agencies) {
-            //show registered agencies page
+            startActivity(new Intent(getApplicationContext(), AgencyActivity.class));
         } else if (id == R.id.nav_activity_log) {
-            //show activity log page
+            Toast.makeText(this, "Under Maintenance. Please check back soon.", Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_account_settings) {
-            //show account settings page
+            Toast.makeText(this, "Under Maintenance. Please check back soon.", Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(getApplicationContext(), AboutActivity.class));
         } else if (id == R.id.nav_logout) {
