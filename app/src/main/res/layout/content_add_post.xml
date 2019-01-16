@@ -29,7 +29,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:inputType="text"
-                android:hint="Topic Title or Caption..."
+                android:hint="How can we help you? Explain with supporting details.."
                 android:padding="15dp"
                 app:met_baseColor="@android:color/black"
                 app:met_floatingLabel="highlight"
@@ -37,23 +37,6 @@
                 app:met_maxCharacters="10000"
                 app:met_primaryColor="@color/colorPrimary"
                 app:met_singleLineEllipsis="false"/>
-
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/txtTopicAttention"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:inputType="textCapSentences"
-                android:hint="Topic Attention"
-                android:padding="15dp"
-                app:met_baseColor="@android:color/black"
-                app:met_floatingLabel="highlight"
-                app:met_textColorHint="#9E9E9E"
-                app:met_maxCharacters="2000"
-                app:met_primaryColor="@color/colorPrimary"
-                app:met_singleLineEllipsis="true"/>
 
             <android.support.v7.widget.CardView
                 android:id="@+id/cardView_topicLocation"

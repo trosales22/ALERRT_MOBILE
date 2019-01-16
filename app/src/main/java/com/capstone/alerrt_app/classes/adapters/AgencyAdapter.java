@@ -2,7 +2,6 @@ package com.capstone.alerrt_app.classes.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,6 +17,7 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AgencyAdapter extends RecyclerView.Adapter<AgencyAdapter.ViewHolder>{
     private List<AgencyDO> agencyList;
@@ -44,7 +44,8 @@ public class AgencyAdapter extends RecyclerView.Adapter<AgencyAdapter.ViewHolder
         final AgencyDO agencyDO = agencyList.get(position);
 
         holder.lblAgencyCaption.setText(agencyDO.getAgencyCaption());
-        holder.btnViewAgency.setOnClickListener(new View.OnClickListener() {
+        holder.lblAgencyDescription.setText(agencyDO.getAgencyDescription());
+        holder.cardView_agency.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 agencyID = agencyDO.getAgencyID();
@@ -66,8 +67,9 @@ public class AgencyAdapter extends RecyclerView.Adapter<AgencyAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         @InjectView(R.id.cardView_agency) CardView cardView_agency;
+        @InjectView(R.id.imgAgencyImage) CircleImageView imgAgencyImage;
         @InjectView(R.id.lblAgencyCaption) TextView lblAgencyCaption;
-        @InjectView(R.id.btnViewAgency) AppCompatButton btnViewAgency;
+        @InjectView(R.id.lblAgencyDescription) TextView lblAgencyDescription;
 
         public ViewHolder(View itemView) {
             super(itemView);

@@ -54,4 +54,17 @@
         android:text="Sample Contact Number"
         android:layout_below="@id/lblAgencyPosition"/>
 
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btnReportNow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:gravity="center"
+        android:drawableLeft="@drawable/ic_arrow_forward_black"
+        android:text="Report Now!"
+        android:textSize="16dp"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorPrimaryDark"/>
+
 </LinearLayout>

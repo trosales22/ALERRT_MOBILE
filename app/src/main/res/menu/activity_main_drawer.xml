@@ -5,14 +5,6 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_registered_agencies"
-            android:icon="@drawable/ic_registered_agencies"
-            android:title="Registered Agencies" />
-        <item
-            android:id="@+id/nav_activity_log"
-            android:icon="@drawable/ic_activity_log"
-            android:title="Activity Log" />
-        <item
             android:id="@+id/nav_account_settings"
             android:icon="@drawable/ic_account_settings"
             android:title="Account Settings" />

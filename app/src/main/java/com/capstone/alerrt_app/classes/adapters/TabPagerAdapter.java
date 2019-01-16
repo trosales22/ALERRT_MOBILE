@@ -8,8 +8,7 @@ import com.capstone.alerrt_app.fragment.NewsfeedFragment;
 
 public class TabPagerAdapter extends FragmentStatePagerAdapter {
 
-    private String[] tabArray = new String[]{"Newsfeed","Places","Notifications"};
-    private Integer tabNumber = 3;
+    private String[] tabArray = new String[]{"My Location","Notifications"};
 
     public TabPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -21,24 +20,18 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        switch(position){
+        switch(position) {
             case 0:
-                NewsfeedFragment newsfeedFragment = new NewsfeedFragment();
-                return newsfeedFragment;
+                return new NewsfeedFragment();
             case 1:
-                NewsfeedFragment placesFragment = new NewsfeedFragment();
-                return placesFragment;
-            case 2:
-                NewsfeedFragment notificationFragment = new NewsfeedFragment();
-                return notificationFragment;
+                return new NewsfeedFragment();
             default:
-                NewsfeedFragment newsfeedFragment1 = new NewsfeedFragment();
-                return newsfeedFragment1;
+                return new NewsfeedFragment();
         }
     }
 
     @Override
     public int getCount() {
-        return tabNumber;
+        return 2;
     }
 }

@@ -24,7 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.capstone.alerrt_app.R;
 import com.capstone.alerrt_app.classes.EndPoints;
-import com.capstone.alerrt_app.classes.ErrorHandler;
+import com.capstone.alerrt_app.classes.adapters.AgencyAdapter;
 import com.capstone.alerrt_app.classes.beans.TopicBean;
 import com.capstone.alerrt_app.classes.requests.MySingleton;
 import com.capstone.alerrt_app.classes.requests.MyStringRequest;
@@ -52,7 +52,6 @@ public class AddPostActivity extends AppCompatActivity {
     @InjectView(R.id.txtTopicLocationAddress) TextView txtTopicLocationAddress;
     @InjectView(R.id.txtTopicLocationLatAndLong) TextView txtTopicLocationLatAndLong;
     @InjectView(R.id.txtTopicTitle) MaterialEditText txtTopicTitle;
-    @InjectView(R.id.txtTopicAttention) MaterialEditText txtTopicAttention;
     @InjectView(R.id.imgTopic) ImageView imgTopic;
     @InjectView(R.id.btnCancelPost) AppCompatButton btnCancelPost;
     @InjectView(R.id.btnAddPhoto) AppCompatButton btnAddPhoto;
@@ -75,6 +74,8 @@ public class AddPostActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.inject(this);
+
+        setTitle("Report To ".concat(AgencyAdapter.agencyCaption).concat(" | ALERRT"));
 
         final MaterialEditText[] editTexts = new MaterialEditText[]{
                 txtTopicTitle
@@ -211,7 +212,7 @@ public class AddPostActivity extends AppCompatActivity {
         topic.setTopicLocationID(placeID);
         topic.setTopicLocationName(placeName);
         topic.setTopicLocationAddress(txtTopicLocationAddress.getText().toString());
-        topic.setTopicAttention(txtTopicAttention.getText().toString());
+        topic.setTopicAgencyID(AgencyAdapter.agencyID);
         topic.setTopicPostedBy(MainActivity.userID);
 
         if(topic.getTopicImage() == null){
@@ -235,8 +236,8 @@ public class AddPostActivity extends AppCompatActivity {
         params.put("topicLocationID",topic.getTopicLocationID());
         params.put("topicLocationName",topic.getTopicLocationName());
         params.put("topicLocationAddress",topic.getTopicLocationAddress());
+        params.put("topicAgencyID", topic.getTopicAgencyID());
 
-        params.put("topicAttention",topic.getTopicAttention());
         params.put("topicPostedBy",topic.getTopicPostedBy());
         params.put("topicDateAndTimePosted",topic.getTopicDateAndTimePosted());
 

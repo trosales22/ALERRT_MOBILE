@@ -1,7 +1,7 @@
 package com.capstone.alerrt_app.classes.beans;
 
 public class TopicBean {
-    String topicImage,topicTitle,topicAttention,topicStatus,topicLocationID,topicLocationName,topicLocationAddress,topicPostedBy,topicDateAndTimePosted;
+    String topicImage,topicTitle,topicAgencyID,topicStatus,topicLocationID,topicLocationName,topicLocationAddress,topicPostedBy,topicDateAndTimePosted;
 
     public String getTopicImage() {
         return topicImage;
@@ -19,12 +19,12 @@ public class TopicBean {
         this.topicTitle = topicTitle;
     }
 
-    public String getTopicAttention() {
-        return topicAttention;
+    public String getTopicAgencyID() {
+        return topicAgencyID;
     }
 
-    public void setTopicAttention(String topicAttention) {
-        this.topicAttention = topicAttention;
+    public void setTopicAgencyID(String topicAgencyID) {
+        this.topicAgencyID = topicAgencyID;
     }
 
     public String getTopicStatus() {

@@ -133,7 +133,7 @@ public class NewsfeedFragment extends Fragment {
                                             topicBean.setTopicDateAndTimePosted(post.getString("TopicDateAndTimePosted"));
                                             topicBean.setTopicTitle(post.getString("TopicTitle"));
                                             topicBean.setTopicImage(post.getString("TopicImage"));
-                                            topicBean.setTopicAttention(post.getString("TopicAttention"));
+                                            topicBean.setTopicAgencyID(post.getString("TopicAgencyID"));
                                             topicBean.setTopicStatus(post.getString("TopicStatus"));
                                             topicBean.setTopicLocationAddress(post.getString("TopicLocationAddress"));
 
@@ -145,7 +145,7 @@ public class NewsfeedFragment extends Fragment {
                                                     topicBean.getTopicLocationAddress(),
                                                     topicBean.getTopicTitle(),
                                                     topicBean.getTopicImage(),
-                                                    "Attention: " + topicBean.getTopicAttention() + "\nStatus: " + topicBean.getTopicStatus()
+                                                    "Status: ".concat(topicBean.getTopicStatus())
                                             );
 
                                             newsfeedList.add(newsfeedDO);

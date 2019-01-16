@@ -117,20 +117,24 @@ public class AgencyActivity extends AppCompatActivity {
 
                                         agencyBean.setAgencyID(agencyObject.getString("AgencyID"));
                                         agencyBean.setAgencyCaption(agencyObject.getString("AgencyCaption"));
+                                        agencyBean.setAgencyDescription(agencyObject.getString("AgencyDescription"));
                                         agencyBean.setAgencyFirstname(agencyObject.getString("AgencyFirstname"));
                                         agencyBean.setAgencyLastname(agencyObject.getString("AgencyLastname"));
                                         agencyBean.setAgencyPosition(agencyObject.getString("AgencyPosition"));
                                         agencyBean.setAgencyContactNumber(agencyObject.getString("AgencyContactNumber"));
                                         agencyBean.setAgencyStatus(agencyObject.getString("AgencyStatus"));
+                                        agencyBean.setAgencyImage(agencyObject.getString("AgencyImage"));
 
                                         AgencyDO agencyDO = new AgencyDO(
                                                 agencyBean.getAgencyID(),
                                                 agencyBean.getAgencyCaption(),
+                                                agencyBean.getAgencyDescription(),
                                                 agencyBean.getAgencyFirstname(),
                                                 agencyBean.getAgencyLastname(),
                                                 agencyBean.getAgencyPosition(),
                                                 agencyBean.getAgencyContactNumber(),
-                                                agencyBean.getAgencyStatus()
+                                                agencyBean.getAgencyStatus(),
+                                                agencyBean.getAgencyImage()
                                         );
 
                                         agencyDOList.add(agencyDO);

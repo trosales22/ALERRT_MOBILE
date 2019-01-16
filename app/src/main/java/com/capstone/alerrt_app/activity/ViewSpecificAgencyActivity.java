@@ -1,9 +1,12 @@
 package com.capstone.alerrt_app.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.capstone.alerrt_app.R;
@@ -18,6 +21,7 @@ public class ViewSpecificAgencyActivity extends AppCompatActivity {
     @InjectView(R.id.lblAgencyFullname) TextView lblAgencyFullname;
     @InjectView(R.id.lblAgencyPosition) TextView lblAgencyPosition;
     @InjectView(R.id.lblAgencyContactNumber) TextView lblAgencyContactNumber;
+    @InjectView(R.id.btnReportNow) AppCompatButton btnReportNow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,13 @@ public class ViewSpecificAgencyActivity extends AppCompatActivity {
         lblAgencyFullname.setText(AgencyAdapter.agencyFullname);
         lblAgencyPosition.setText(AgencyAdapter.agencyPosition);
         lblAgencyContactNumber.setText(AgencyAdapter.agencyContactNumber.replaceAll(",","\n"));
+
+        btnReportNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), AddPostActivity.class));
+            }
+        });
     }
 
     @Override
