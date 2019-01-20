@@ -4,6 +4,20 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+        <item android:title="Notifications">
+            <menu>
+                <item
+                    android:id="@+id/nav_notif_comments"
+                    android:icon="@drawable/ic_post"
+                    android:title="Comments" />
+
+                <item
+                    android:id="@+id/nav_notif_report_status"
+                    android:icon="@drawable/ic_priority"
+                    android:title="Report Status" />
+            </menu>
+        </item>
+
         <item
             android:id="@+id/nav_account_settings"
             android:icon="@drawable/ic_account_settings"

@@ -181,7 +181,11 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_account_settings) {
+        if(id == R.id.nav_notif_comments){
+            startActivity(new Intent(getApplicationContext(), NotificationCommentsActivity.class));
+        } else if(id == R.id.nav_notif_report_status){
+            startActivity(new Intent(getApplicationContext(), NotificationReportStatusActivity.class));
+        } else if (id == R.id.nav_account_settings) {
             Toast.makeText(this, "Under Maintenance. Please check back soon.", Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(getApplicationContext(), AboutActivity.class));

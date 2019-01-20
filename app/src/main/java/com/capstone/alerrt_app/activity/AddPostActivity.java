@@ -38,6 +38,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -202,7 +203,7 @@ public class AddPostActivity extends AppCompatActivity {
                 }
             }
         }catch(Exception ex){
-            Log.e("Error Message", ex.toString());
+            Log.e("AddPostActivity", ex.toString());
         }
     }
 
@@ -212,6 +213,7 @@ public class AddPostActivity extends AppCompatActivity {
         topic.setTopicLocationID(placeID);
         topic.setTopicLocationName(placeName);
         topic.setTopicLocationAddress(txtTopicLocationAddress.getText().toString());
+
         topic.setTopicAgencyID(AgencyAdapter.agencyID);
         topic.setTopicPostedBy(MainActivity.userID);
 
@@ -220,9 +222,9 @@ public class AddPostActivity extends AppCompatActivity {
         }
 
         SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, yyyy | hh:mm a");
-        Calendar dateAndTimePosted_calendar = Calendar.getInstance();
+        Calendar calendar_dateAndTimePosted = Calendar.getInstance();
 
-        topic.setTopicDateAndTimePosted(sdf.format(dateAndTimePosted_calendar.getTime()));
+        topic.setTopicDateAndTimePosted(sdf.format(calendar_dateAndTimePosted.getTime()));
     }
 
     public void addPost(){
@@ -230,12 +232,28 @@ public class AddPostActivity extends AppCompatActivity {
 
         Map<String, String> params = new HashMap<>();
         params.put("Content-Type", "image/jpeg; charset=utf-8");
-        params.put("topicTitle", topic.getTopicTitle());
+
+        params.put("topicTitle", topic.getTopicTitle().trim());
         params.put("topicImage", topic.getTopicImage());
 
-        params.put("topicLocationID",topic.getTopicLocationID());
-        params.put("topicLocationName",topic.getTopicLocationName());
-        params.put("topicLocationAddress",topic.getTopicLocationAddress());
+        if(topic.getTopicLocationID() == null){
+            params.put("topicLocationID", "");
+        }else{
+            params.put("topicLocationID", topic.getTopicLocationID());
+        }
+
+        if(topic.getTopicLocationName() == null){
+            params.put("topicLocationName", "");
+        }else{
+            params.put("topicLocationName", topic.getTopicLocationName());
+        }
+
+        if(topic.getTopicLocationAddress() == null){
+            params.put("topicLocationAddress", "");
+        }else{
+            params.put("topicLocationAddress", topic.getTopicLocationAddress());
+        }
+
         params.put("topicAgencyID", topic.getTopicAgencyID());
 
         params.put("topicPostedBy",topic.getTopicPostedBy());

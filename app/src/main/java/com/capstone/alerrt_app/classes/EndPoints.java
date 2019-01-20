@@ -2,7 +2,7 @@ package com.capstone.alerrt_app.classes;
 
 public class EndPoints {
     private static String BASE_URL = "http://alerrt.x10.mx/ALERRT/mobile_app/"; //for production
-    //private static String BASE_URL = "http://192.168.1.9/ALERRT/mobile_app/"; //for development
+    //private static String BASE_URL = "http://192.168.1.15/ALERRT/mobile_app/"; //for development
 
     public static String LOGIN_USER = BASE_URL + "loginUser.php";
     public static String REGISTER_USER = BASE_URL + "registerUser.php";
@@ -14,4 +14,6 @@ public class EndPoints {
     public static String UPDATE_COMMENT = BASE_URL + "updateComment.php?commentID=";
     public static String DELETE_COMMENT = BASE_URL + "deleteComment.php?commentID=";
     public static String SHOW_ALL_AGENCY = BASE_URL + "showAllAgency.php";
+    public static String SHOW_ALL_NOTIF_COMMENTS = BASE_URL + "showAllNotifComments.php?loggedInUser=";
+    public static String SHOW_ALL_NOTIF_REPORT_STATUS = BASE_URL + "showAllNotifReportStatus.php?loggedInUser=";
 }

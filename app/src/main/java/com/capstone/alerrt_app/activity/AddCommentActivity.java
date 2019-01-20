@@ -15,7 +15,7 @@ import com.android.volley.VolleyError;
 import com.capstone.alerrt_app.R;
 import com.capstone.alerrt_app.classes.EndPoints;
 import com.capstone.alerrt_app.classes.Validation;
-import com.capstone.alerrt_app.classes.adapters.NewsfeedAdapter;
+import com.capstone.alerrt_app.classes.adapters.NotificationCommentsAdapter;
 import com.capstone.alerrt_app.classes.beans.CommentBean;
 import com.capstone.alerrt_app.classes.requests.MySingleton;
 import com.capstone.alerrt_app.classes.requests.MyStringRequest;
@@ -89,7 +89,7 @@ public class AddCommentActivity extends AppCompatActivity {
 
         Map<String, String> parameters = new HashMap<>();
 
-        parameters.put("postID", NewsfeedAdapter.topicPostID);
+        parameters.put("postID", NotificationCommentsAdapter.topicID);
         parameters.put("commentBy",MainActivity.userID);
         parameters.put("comment",comment.getComment());
         parameters.put("dateAndTimeCommented",comment.getDateAndTimeCommented());

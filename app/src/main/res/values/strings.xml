@@ -15,6 +15,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main">Home | ALERRT</string>
     <string name="title_activity_comments">Comments | ALERRT</string>
+    <string name="title_activity_notification_comments">Notification (Comments) | ALERRT</string>
+    <string name="title_activity_notification_report_status">Notification (Report Status) | ALERRT</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>

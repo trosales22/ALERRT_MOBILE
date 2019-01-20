@@ -20,7 +20,7 @@ import com.capstone.alerrt_app.R;
 import com.capstone.alerrt_app.classes.EndPoints;
 import com.capstone.alerrt_app.classes.adapters.CommentsAdapter;
 import com.capstone.alerrt_app.classes.adapters.EmptyRecyclerViewAdapter;
-import com.capstone.alerrt_app.classes.adapters.NewsfeedAdapter;
+import com.capstone.alerrt_app.classes.adapters.NotificationCommentsAdapter;
 import com.capstone.alerrt_app.classes.beans.CommentBean;
 import com.capstone.alerrt_app.classes.data_objects.CommentDO;
 import com.capstone.alerrt_app.classes.requests.MySingleton;
@@ -108,7 +108,7 @@ public class CommentsActivity extends AppCompatActivity {
             progressDialog.setCancelable(false);
             progressDialog.show();
 
-            MyStringRequest request = new MyStringRequest(null, Request.Method.GET, EndPoints.SHOW_ALL_COMMENTS + NewsfeedAdapter.topicPostID,
+            MyStringRequest request = new MyStringRequest(null, Request.Method.GET, EndPoints.SHOW_ALL_COMMENTS + NotificationCommentsAdapter.topicID,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {

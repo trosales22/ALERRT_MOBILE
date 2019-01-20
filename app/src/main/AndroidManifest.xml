@@ -104,6 +104,18 @@
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.NotificationCommentsActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_notification_comments"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.NotificationReportStatusActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_notification_report_status"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
