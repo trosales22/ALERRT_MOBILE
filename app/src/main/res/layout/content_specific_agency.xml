@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="56dp"
+    android:paddingTop="65dp"
     android:paddingLeft="24dp"
     android:paddingRight="24dp">
 
@@ -21,30 +21,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/lblAgencyFullname"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:drawableLeft="@drawable/ic_person"
-        android:drawablePadding="10dp"
-        android:text="Sample Fullname"
-        android:layout_below="@id/lblAgencyCaption"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/lblAgencyPosition"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:drawableLeft="@drawable/ic_work"
-        android:drawablePadding="10dp"
-        android:text="Sample Position"
-        android:layout_below="@id/lblAgencyFullname"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/lblAgencyContactNumber"
         android:layout_marginBottom="10dp"
         android:textColor="@color/black"
@@ -52,7 +28,7 @@
         android:drawableLeft="@drawable/ic_phone"
         android:drawablePadding="10dp"
         android:text="Sample Contact Number"
-        android:layout_below="@id/lblAgencyPosition"/>
+        android:layout_below="@id/lblAgencyCaption"/>
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/btnReportNow"

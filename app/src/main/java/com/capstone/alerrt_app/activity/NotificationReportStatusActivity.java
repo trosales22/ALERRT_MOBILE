@@ -122,6 +122,7 @@ public class NotificationReportStatusActivity extends AppCompatActivity {
                                             notificationReportStatusBean.setStatusID(notifReportStatusObject.getString("StatusID"));
                                             notificationReportStatusBean.setStatusPostID(notifReportStatusObject.getString("StatusPostID"));
                                             notificationReportStatusBean.setStatusTopicTitle(notifReportStatusObject.getString("StatusTopicTitle"));
+                                            notificationReportStatusBean.setStatusAgencyCaption(notifReportStatusObject.getString("StatusAgencyCaption"));
                                             notificationReportStatusBean.setStatusType(notifReportStatusObject.getString("StatusType"));
                                             notificationReportStatusBean.setStatusDateAndTimeUpdated(notifReportStatusObject.getString("StatusDateAndTime"));
                                             notificationReportStatusBean.setUpdatedBy_userID(updaterInfoObject.getString("UserID"));
@@ -132,6 +133,7 @@ public class NotificationReportStatusActivity extends AppCompatActivity {
                                                     notificationReportStatusBean.getStatusID(),
                                                     notificationReportStatusBean.getStatusPostID(),
                                                     notificationReportStatusBean.getStatusTopicTitle(),
+                                                    notificationReportStatusBean.getStatusAgencyCaption(),
                                                     notificationReportStatusBean.getStatusType(),
                                                     notificationReportStatusBean.getUpdatedBy_fullname(),
                                                     notificationReportStatusBean.getUpdatedBy_profilePic(),

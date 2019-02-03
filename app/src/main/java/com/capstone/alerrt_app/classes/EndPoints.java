@@ -2,7 +2,7 @@ package com.capstone.alerrt_app.classes;
 
 public class EndPoints {
     private static String BASE_URL = "http://alerrt.x10.mx/ALERRT/mobile_app/"; //for production
-    //private static String BASE_URL = "http://192.168.1.15/ALERRT/mobile_app/"; //for development
+    //private static String BASE_URL = "http://192.168.1.7/ALERRT/mobile_app/"; //for development
 
     public static String LOGIN_USER = BASE_URL + "loginUser.php";
     public static String REGISTER_USER = BASE_URL + "registerUser.php";

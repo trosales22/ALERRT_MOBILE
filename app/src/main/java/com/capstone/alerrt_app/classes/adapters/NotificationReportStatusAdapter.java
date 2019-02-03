@@ -42,12 +42,21 @@ public class NotificationReportStatusAdapter extends RecyclerView.Adapter<Notifi
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append(notificationReportStatusDO.getUpdatedBy_fullname());
-        sb.append(" updated your report status (");
-        sb.append(notificationReportStatusDO.getStatusTopicTitle());
-        sb.append(") into ");
-        sb.append(notificationReportStatusDO.getStatusType().toUpperCase());
-        sb.append(".");
+        if(notificationReportStatusDO.getStatusType().equals("Reassigned")){
+            sb.append(notificationReportStatusDO.getUpdatedBy_fullname());
+            sb.append(" reassigned your report (");
+            sb.append(notificationReportStatusDO.getStatusTopicTitle());
+            sb.append(") to ");
+            sb.append(notificationReportStatusDO.getStatusAgencyCaption());
+            sb.append(".");
+        }else{
+            sb.append(notificationReportStatusDO.getUpdatedBy_fullname());
+            sb.append(" updated your report status (");
+            sb.append(notificationReportStatusDO.getStatusTopicTitle());
+            sb.append(") into ");
+            sb.append(notificationReportStatusDO.getStatusType().toUpperCase());
+            sb.append(".");
+        }
 
         holder.lblNotificationReportStatus_message.setText(sb.toString());
 

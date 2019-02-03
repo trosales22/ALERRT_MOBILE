@@ -56,7 +56,6 @@
         <activity
             android:name=".activity.SignUpActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Dark" />
         <activity
@@ -90,7 +89,7 @@
             android:label="About | ALERRT"
             android:noHistory="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Add.Dialog" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.AgencyActivity"
             android:configChanges="orientation|screenSize"

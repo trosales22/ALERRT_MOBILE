@@ -43,7 +43,6 @@ public class SignUpActivity extends AppCompatActivity {
     @InjectView(R.id.frmRegisterAccount_txtName) EditText frmRegisterAccount_txtName;
     @InjectView(R.id.frmRegisterAccount_txtEmail) EditText frmRegisterAccount_txtEmail;
     @InjectView(R.id.frmRegisterAccount_txtPassword) EditText frmRegisterAccount_txtPassword;
-    @InjectView(R.id.frmRegisterAccount_txtAddress) EditText frmRegisterAccount_txtAddress;
     @InjectView(R.id.frmRegisterAccount_txtBirthdate) EditText frmRegisterAccount_txtBirthdate;
     @InjectView(R.id.frmRegisterAccount_txtMobileNumber) EditText frmRegisterAccount_txtMobileNumber;
     @InjectView(R.id.frmRegisterAccount_radioGender) RadioGroup frmRegisterAccount_radioGender;
@@ -62,7 +61,6 @@ public class SignUpActivity extends AppCompatActivity {
                 frmRegisterAccount_txtName,
                 frmRegisterAccount_txtEmail,
                 frmRegisterAccount_txtPassword,
-                frmRegisterAccount_txtAddress,
                 frmRegisterAccount_txtBirthdate,
                 frmRegisterAccount_txtMobileNumber
         };
@@ -105,7 +103,6 @@ public class SignUpActivity extends AppCompatActivity {
             user.setFullname(frmRegisterAccount_txtName.getText().toString());
             user.setEmailAddress(frmRegisterAccount_txtEmail.getText().toString());
             user.setPassword(frmRegisterAccount_txtPassword.getText().toString());
-            user.setAddress(frmRegisterAccount_txtAddress.getText().toString());
             user.setBirthdate(frmRegisterAccount_txtBirthdate.getText().toString());
             user.setMobileNumber(frmRegisterAccount_txtMobileNumber.getText().toString());
             user.setGender(gender);
@@ -128,7 +125,6 @@ public class SignUpActivity extends AppCompatActivity {
             parameters.put("fullname",user.getFullname());
             parameters.put("emailAddress",user.getEmailAddress());
             parameters.put("password",user.getPassword());
-            parameters.put("address",user.getAddress());
             parameters.put("birthdate",user.getBirthdate());
             parameters.put("mobileNumber",user.getMobileNumber());
             parameters.put("gender",user.getGender());

@@ -1,7 +1,7 @@
 package com.capstone.alerrt_app.classes.beans;
 
 public class UserBean {
-    String userID,fullname,emailAddress,password,address,birthdate,mobileNumber,gender,dateAndTimeRegistered;
+    String userID,fullname,emailAddress,password,birthdate,mobileNumber,gender,dateAndTimeRegistered;
 
     public String getUserID() {
         return userID;
@@ -33,14 +33,6 @@ public class UserBean {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getBirthdate() {

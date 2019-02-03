@@ -1,7 +1,7 @@
 package com.capstone.alerrt_app.classes.beans;
 
 public class NotificationReportStatusBean {
-    private String statusID,statusPostID,statusTopicTitle,statusType,updatedBy_fullname,updatedBy_profilePic,updatedBy_userID,statusDateAndTimeUpdated;
+    private String statusID,statusPostID,statusTopicTitle,statusAgencyCaption,statusType,updatedBy_fullname,updatedBy_profilePic,updatedBy_userID,statusDateAndTimeUpdated;
 
     public String getStatusID() {
         return statusID;
@@ -25,6 +25,14 @@ public class NotificationReportStatusBean {
 
     public void setStatusTopicTitle(String statusTopicTitle) {
         this.statusTopicTitle = statusTopicTitle;
+    }
+
+    public String getStatusAgencyCaption() {
+        return statusAgencyCaption;
+    }
+
+    public void setStatusAgencyCaption(String statusAgencyCaption) {
+        this.statusAgencyCaption = statusAgencyCaption;
     }
 
     public String getStatusType() {
