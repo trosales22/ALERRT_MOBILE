@@ -18,7 +18,9 @@ import butterknife.InjectView;
 public class ViewSpecificAgencyActivity extends AppCompatActivity {
 
     @InjectView(R.id.lblAgencyCaption) TextView lblAgencyCaption;
+    @InjectView(R.id.lblAgencyDescription) TextView lblAgencyDescription;
     @InjectView(R.id.lblAgencyContactNumber) TextView lblAgencyContactNumber;
+    @InjectView(R.id.lblAgencyLocation) TextView lblAgencyLocation;
     @InjectView(R.id.btnReportNow) AppCompatButton btnReportNow;
 
     @Override
@@ -34,7 +36,9 @@ public class ViewSpecificAgencyActivity extends AppCompatActivity {
         setTitle(AgencyAdapter.agencyCaption.concat(" | ALERRT"));
 
         lblAgencyCaption.setText(AgencyAdapter.agencyCaption);
+        lblAgencyDescription.setText(AgencyAdapter.agencyDescription);
         lblAgencyContactNumber.setText(AgencyAdapter.agencyContactNumber.replaceAll(",","\n"));
+        lblAgencyLocation.setText(AgencyAdapter.agencyLocation);
 
         btnReportNow.setOnClickListener(new View.OnClickListener() {
             @Override

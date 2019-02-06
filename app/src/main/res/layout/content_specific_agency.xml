@@ -21,14 +21,37 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/lblAgencyDescription"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/ic_info_black"
+        android:text="Sample Agency Description"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/lblAgencyContactNumber"
         android:layout_marginBottom="10dp"
         android:textColor="@color/black"
         android:textSize="18sp"
-        android:drawableLeft="@drawable/ic_phone"
+        android:drawableLeft="@drawable/ic_contact_phone_black"
         android:drawablePadding="10dp"
         android:text="Sample Contact Number"
-        android:layout_below="@id/lblAgencyCaption"/>
+        android:layout_below="@id/lblAgencyDescription"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblAgencyLocation"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:drawableLeft="@drawable/ic_place_black"
+        android:drawablePadding="10dp"
+        android:text="Sample Location"
+        android:layout_below="@id/lblAgencyContactNumber"/>
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/btnReportNow"
