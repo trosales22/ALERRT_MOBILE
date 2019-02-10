@@ -6,17 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activity.CommentsActivity"
-    tools:showIn="@layout/activity_comments">
+    tools:context=".activity.MyReportsActivity"
+    tools:showIn="@layout/activity_my_reports">
 
     <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipeToRefresh_comments"
+        android:id="@+id/swipeToRefresh_myReports"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView_comments"
+            android:id="@+id/recyclerView_myReports"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </android.support.v7.widget.RecyclerView>

@@ -1,7 +1,15 @@
 package com.capstone.alerrt_app.classes.beans;
 
 public class TopicBean {
-    String topicImage,topicTitle,topicAgencyID,topicStatus,topicLocationID,topicLocationName,topicLocationAddress,topicPostedBy,topicDateAndTimePosted;
+    String topicSeverity, topicImage,topicTitle,topicAgencyID,topicStatus,topicLocationID,topicLocationName,topicLocationAddress,topicPostedBy,topicDateAndTimePosted;
+
+    public String getTopicSeverity() {
+        return topicSeverity;
+    }
+
+    public void setTopicSeverity(String topicSeverity) {
+        this.topicSeverity = topicSeverity;
+    }
 
     public String getTopicImage() {
         return topicImage;

@@ -1,17 +1,19 @@
 package com.capstone.alerrt_app.classes.data_objects;
 
 public class NewsfeedDO {
-    String topicPostID,topicPosterUserID,topic_postedBy,topic_dateAndTimePosted,topic_locationAddress,topicTitle,topicImage,topicDetails;
+    String topicPostID,topicPosterUserID,topicPostedBy,topicDateAndTimePosted,topicLocationAddress,topicSeverity,topicTitle,topicImage,topicAgency,topicStatus;
 
-    public NewsfeedDO(String topicPostID, String topicPosterUserID, String topic_postedBy, String topic_dateAndTimePosted, String topic_locationAddress, String topicTitle, String topicImage, String topicDetails) {
+    public NewsfeedDO(String topicPostID, String topicPosterUserID, String topicPostedBy, String topicDateAndTimePosted, String topicLocationAddress, String topicSeverity, String topicTitle, String topicImage, String topicAgency, String topicStatus) {
         this.topicPostID = topicPostID;
         this.topicPosterUserID = topicPosterUserID;
-        this.topic_postedBy = topic_postedBy;
-        this.topic_dateAndTimePosted = topic_dateAndTimePosted;
-        this.topic_locationAddress = topic_locationAddress;
+        this.topicPostedBy = topicPostedBy;
+        this.topicDateAndTimePosted = topicDateAndTimePosted;
+        this.topicLocationAddress = topicLocationAddress;
+        this.topicSeverity = topicSeverity;
         this.topicTitle = topicTitle;
         this.topicImage = topicImage;
-        this.topicDetails = topicDetails;
+        this.topicAgency = topicAgency;
+        this.topicStatus = topicStatus;
     }
 
     public String getTopicPostID() {
@@ -22,16 +24,20 @@ public class NewsfeedDO {
         return topicPosterUserID;
     }
 
-    public String getTopic_postedBy() {
-        return topic_postedBy;
+    public String getTopicPostedBy() {
+        return topicPostedBy;
     }
 
-    public String getTopic_dateAndTimePosted() {
-        return topic_dateAndTimePosted;
+    public String getTopicDateAndTimePosted() {
+        return topicDateAndTimePosted;
     }
 
-    public String getTopic_locationAddress() {
-        return topic_locationAddress;
+    public String getTopicLocationAddress() {
+        return topicLocationAddress;
+    }
+
+    public String getTopicSeverity() {
+        return topicSeverity;
     }
 
     public String getTopicTitle() {
@@ -42,7 +48,11 @@ public class NewsfeedDO {
         return topicImage;
     }
 
-    public String getTopicDetails() {
-        return topicDetails;
+    public String getTopicAgency() {
+        return topicAgency;
+    }
+
+    public String getTopicStatus() {
+        return topicStatus;
     }
 }

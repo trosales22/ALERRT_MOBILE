@@ -109,7 +109,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="By clicking Create Account, you agreed to our ALERRT User Agreement and Privacy Policy."
+            android:text="By clicking Create Account, you agreed to our ALERRT User Agreement and Privacy Policy. \n\nPlease take note that you need to be approved by the super administrator before you can proceed or login to the system."
             android:gravity="center"
             android:textSize="14dip"/>
 

@@ -21,6 +21,15 @@
                 android:adjustViewBounds="true"
                 android:layout_gravity="center" />
 
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/cmbTopicSeverity"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:spinnerMode="dialog"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/black" />
+
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/txtTopicTitle"
                 android:layout_width="match_parent"

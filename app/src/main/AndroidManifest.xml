@@ -24,11 +24,15 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         tools:replace="android:icon">
+
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDwnNsKKRIVia-FigJsh2FMx3dLfeR_HK4" />
 
-        <!-- Broadcast receiver declaration in manifest file and make sure to enable it -->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" /> <!-- Broadcast receiver declaration in manifest file and make sure to enable it -->
         <receiver
             android:name=".classes.ConnectivityReceiver"
             android:enabled="true">
@@ -48,6 +52,7 @@
             android:theme="@style/AppTheme.Dark">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -69,6 +74,20 @@
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.MyReportsActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_my_reports"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.AccountSettingsActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_account_settings"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".activity.AddCommentActivity"
             android:configChanges="orientation|screenSize"
@@ -112,7 +131,7 @@
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_notification_report_status"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

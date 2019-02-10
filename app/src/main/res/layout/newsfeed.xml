@@ -59,7 +59,44 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
+                            android:drawableLeft="@drawable/ic_access_time_black"
                             android:text="Just now"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/txtTopicPlace"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@drawable/ic_place_black"
+                            android:text="Sample Location"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/txtTopicAgency"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@drawable/ic_agency_black"
+                            android:text="Sample Agency"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/txtTopicStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@drawable/ic_report_black"
+                            android:text="Sample Status"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/txtTopicSeverity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@drawable/ic_priority_high_black"
+                            android:text="Sample Severity"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -74,16 +111,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="16dp">
-
-                <TextView
-                    android:id="@+id/txtTopicDetails"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="Attention: TXTFire Manila-Philippines\nStatus: Reported"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:layout_marginBottom="0dp"/>
 
                 <TextView
                     android:id="@+id/txtTopicTitle"

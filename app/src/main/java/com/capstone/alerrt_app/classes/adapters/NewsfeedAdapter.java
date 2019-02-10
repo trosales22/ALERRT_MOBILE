@@ -44,10 +44,13 @@ public class NewsfeedAdapter extends RecyclerView.Adapter<NewsfeedAdapter.ViewHo
     public void onBindViewHolder(NewsfeedAdapter.ViewHolder holder, int position) {
         final NewsfeedDO newsfeedDO = newsfeedList.get(position);
 
-        holder.txtPostedBy.setText(newsfeedDO.getTopic_postedBy());
-        holder.txtTopicDateAndTimePosted.setText(newsfeedDO.getTopic_dateAndTimePosted());
+        holder.txtPostedBy.setText(newsfeedDO.getTopicPostedBy());
+        holder.txtTopicDateAndTimePosted.setText(newsfeedDO.getTopicDateAndTimePosted());
+        holder.txtTopicSeverity.setText(newsfeedDO.getTopicSeverity());
         holder.txtTopicTitle.setText(newsfeedDO.getTopicTitle());
-        holder.txtTopicDetails.setText(newsfeedDO.getTopicDetails());
+        holder.txtTopicPlace.setText(newsfeedDO.getTopicLocationAddress());
+        holder.txtTopicAgency.setText(newsfeedDO.getTopicAgency());
+        holder.txtTopicStatus.setText(newsfeedDO.getTopicStatus());
 
         if(newsfeedDO.getTopicImage().isEmpty()){
             holder.imgTopic.setImageResource(R.drawable.no_image_available);
@@ -77,8 +80,11 @@ public class NewsfeedAdapter extends RecyclerView.Adapter<NewsfeedAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         @InjectView(R.id.txtPostedBy) TextView txtPostedBy;
         @InjectView(R.id.txtTopicDateAndTimePosted) TextView txtTopicDateAndTimePosted;
-        @InjectView(R.id.txtTopicDetails) TextView txtTopicDetails;
+        @InjectView(R.id.txtTopicPlace) TextView txtTopicPlace;
+        @InjectView(R.id.txtTopicAgency) TextView txtTopicAgency;
+        @InjectView(R.id.txtTopicSeverity) TextView txtTopicSeverity;
         @InjectView(R.id.txtTopicTitle) TextView txtTopicTitle;
+        @InjectView(R.id.txtTopicStatus) TextView txtTopicStatus;
 
         @InjectView(R.id.imgTopic) ImageView imgTopic;
         @InjectView(R.id.btnComments) AppCompatButton btnComments;

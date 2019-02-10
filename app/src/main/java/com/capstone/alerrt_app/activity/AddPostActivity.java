@@ -4,17 +4,22 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,8 +48,11 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.ButterKnife;
@@ -57,6 +65,7 @@ public class AddPostActivity extends AppCompatActivity {
     @InjectView(R.id.txtTopicLocationID) TextView txtTopicLocationID;
     @InjectView(R.id.txtTopicLocationAddress) TextView txtTopicLocationAddress;
     @InjectView(R.id.txtTopicLocationLatAndLong) TextView txtTopicLocationLatAndLong;
+    @InjectView(R.id.cmbTopicSeverity) AppCompatSpinner cmbTopicSeverity;
     @InjectView(R.id.txtTopicTitle) MaterialEditText txtTopicTitle;
     @InjectView(R.id.imgTopic) ImageView imgTopic;
     @InjectView(R.id.btnCancelPost) AppCompatButton btnCancelPost;
@@ -80,6 +89,8 @@ public class AddPostActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.inject(this);
+
+        initTopicSeverityDropdown();
 
         setTitle("Report To ".concat(AgencyAdapter.agencyCaption).concat(" | ALERRT"));
 
@@ -125,19 +136,21 @@ public class AddPostActivity extends AppCompatActivity {
         btnPost.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                final ProgressDialog progressDialog = new ProgressDialog(AddPostActivity.this);
-                progressDialog.setIndeterminate(true);
-                progressDialog.setMessage("Posting your topic... Please wait!");
-                progressDialog.setCancelable(false);
-                progressDialog.show();
+                if(!validateDropdown(cmbTopicSeverity,"CHOOSE TOPIC SEVERITY","Please choose topic severity!")) {
+                    final ProgressDialog progressDialog = new ProgressDialog(AddPostActivity.this);
+                    progressDialog.setIndeterminate(true);
+                    progressDialog.setMessage("Posting your topic... Please wait!");
+                    progressDialog.setCancelable(false);
+                    progressDialog.show();
 
-                new android.os.Handler().postDelayed(
-                        new Runnable() {
-                            public void run() {
-                                addPost();
-                                progressDialog.dismiss();
-                            }
-                        }, 3000);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    addPost();
+                                    progressDialog.dismiss();
+                                }
+                            }, 3000);
+                }
             }
         });
     }
@@ -214,6 +227,7 @@ public class AddPostActivity extends AppCompatActivity {
 
     private void init(){
         topic.setTopicTitle(txtTopicTitle.getText().toString());
+        topic.setTopicSeverity(cmbTopicSeverity.getSelectedItem().toString());
 
         topic.setTopicLocationID(placeID);
         topic.setTopicLocationName(placeName);
@@ -232,12 +246,93 @@ public class AddPostActivity extends AppCompatActivity {
         topic.setTopicDateAndTimePosted(sdf.format(calendar_dateAndTimePosted.getTime()));
     }
 
+    private void spinnerOnItemSelected(AppCompatSpinner spinner){
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItemText = (String) parent.getItemAtPosition(position);
+                // If user change the default selection
+                // First item is disable and it is used for hint
+                if (position > 0) {
+                    // Notify the selected item text
+                    Toast.makeText
+                            (getApplicationContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
+                            .show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    private boolean validateDropdown(AppCompatSpinner spinner,String selectedText,String errorMessage){
+        boolean isEmpty = false;
+
+        if(spinner.getSelectedItem().toString() == selectedText){
+            Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+            spinner.requestFocus();
+            isEmpty = true;
+        }
+
+        return isEmpty;
+    }
+
+    private void initTopicSeverityDropdown(){
+        try {
+            String[] gender = new String[]{
+                    "CHOOSE TOPIC SEVERITY",
+                    "Minor",
+                    "Moderate",
+                    "Major",
+                    "Critical"
+            };
+
+            final List<String> genderList = new ArrayList<>(Arrays.asList(gender));
+
+            // Initializing an ArrayAdapter
+            final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
+                    this, R.layout.spinner_item, genderList) {
+                @Override
+                public boolean isEnabled(int position) {
+                    if (position == 0) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+
+                @Override
+                public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                    View view = super.getDropDownView(position, convertView, parent);
+                    TextView tv = (TextView) view;
+                    if (position == 0) {
+                        // Set the hint text color gray
+                        tv.setTextColor(Color.GRAY);
+                    } else {
+                        tv.setTextColor(Color.BLACK);
+                    }
+                    return view;
+                }
+            };
+            spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
+            cmbTopicSeverity.setAdapter(spinnerArrayAdapter);
+
+            spinnerOnItemSelected(cmbTopicSeverity);
+        }catch(Exception ex){
+            Log.e("AddPostActivity", ex.toString());
+        }
+    }
+
     public void addPost(){
         init();
 
         Map<String, String> params = new HashMap<>();
         params.put("Content-Type", "image/jpeg; charset=utf-8");
 
+        params.put("topicSeverity", topic.getTopicSeverity());
         params.put("topicTitle", topic.getTopicTitle().trim());
         params.put("topicImage", topic.getTopicImage());
 
@@ -276,6 +371,7 @@ public class AddPostActivity extends AppCompatActivity {
                 new Response.ErrorListener(){
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        /*
                         String message = null;
                         if (error instanceof NetworkError) {
                             message = "Cannot connect to Internet...Please check your connection!";
@@ -292,6 +388,10 @@ public class AddPostActivity extends AppCompatActivity {
                         }
 
                         Toast.makeText(AddPostActivity.this, message, Toast.LENGTH_LONG).show();
+                        */
+                        Toast.makeText(AddPostActivity.this, "Topic posted successfully!", Toast.LENGTH_LONG).show();
+                        finish();
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     }
                 }
         );

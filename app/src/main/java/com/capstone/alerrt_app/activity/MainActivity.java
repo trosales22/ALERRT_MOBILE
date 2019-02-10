@@ -24,7 +24,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,7 +64,7 @@ public class MainActivity extends AppCompatActivity
 
     private TextView txtLoggedInUser_fullname,txtLoggedInUser_email;
     UserBean userBean = new UserBean();
-    public static String userID,userEmailAddress;
+    public static String userID,userFullname,userEmailAddress,userMobileNumber;
     public static boolean isConnected;
     private GoogleMap mMap;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
@@ -141,28 +140,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -173,8 +150,10 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(getApplicationContext(), NotificationCommentsActivity.class));
         } else if(id == R.id.nav_notif_report_status){
             startActivity(new Intent(getApplicationContext(), NotificationReportStatusActivity.class));
+        } else if (id == R.id.nav_my_reports) {
+            startActivity(new Intent(getApplicationContext(), MyReportsActivity.class));
         } else if (id == R.id.nav_account_settings) {
-            Toast.makeText(this, "Under Maintenance. Please check back soon.", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(getApplicationContext(), AccountSettingsActivity.class));
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(getApplicationContext(), AboutActivity.class));
         } else if (id == R.id.nav_logout) {
@@ -216,7 +195,7 @@ public class MainActivity extends AppCompatActivity
             progressDialog.setCancelable(false);
             progressDialog.show();
 
-            CacheRequest request = new CacheRequest(null, Request.Method.POST, EndPoints.LOGGED_IN_USER_INFO + SharedPrefManager.getInstance(MainActivity.this).getEmailAddressOrUsername(),
+            CacheRequest request = new CacheRequest(null, Request.Method.GET, EndPoints.LOGGED_IN_USER_INFO + SharedPrefManager.getInstance(MainActivity.this).getEmailAddressOrUsername(),
                     new Response.Listener<NetworkResponse>() {
                         @Override
                         public void onResponse(NetworkResponse response) {
@@ -232,8 +211,11 @@ public class MainActivity extends AppCompatActivity
                                     JSONObject user = users.getJSONObject(i);
 
                                     userID = user.getString("UserID");
+                                    userFullname = user.getString("Fullname");
                                     userEmailAddress = user.getString("Email");
-                                    userBean.setFullname(user.getString("Fullname"));
+                                    userMobileNumber = user.getString("MobileNumber");
+
+                                    userBean.setFullname(userFullname);
 
                                     txtLoggedInUser_fullname.setText(userBean.getFullname());
                                     txtLoggedInUser_email.setText(userEmailAddress);
