@@ -1,5 +1,6 @@
 package com.capstone.alerrt_app.activity;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -50,6 +52,7 @@ public class SignUpActivity extends AppCompatActivity {
     @InjectView(R.id.btnGoToLoginPage) TextView btnGoToLoginPage;
 
     UserBean user = new UserBean();
+    private int mYear, mMonth, mDay, mHour, mMinute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,36 @@ public class SignUpActivity extends AppCompatActivity {
                 frmRegisterAccount_txtBirthdate,
                 frmRegisterAccount_txtMobileNumber
         };
+
+        frmRegisterAccount_txtBirthdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get Current Date
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(SignUpActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                StringBuilder sb = new StringBuilder();
+                                sb.append(String.format("%02d", monthOfYear + 1));
+                                sb.append("/");
+                                sb.append(dayOfMonth);
+                                sb.append("/");
+                                sb.append(year);
+
+                                frmRegisterAccount_txtBirthdate.setText(sb.toString());
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.show();
+            }
+        });
 
         frmRegisterAccount_btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
