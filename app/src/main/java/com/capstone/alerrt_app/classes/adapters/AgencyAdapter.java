@@ -24,7 +24,7 @@ public class AgencyAdapter extends RecyclerView.Adapter<AgencyAdapter.ViewHolder
     private Context context;
     private View view;
 
-    public static String agencyID,agencyCaption,agencyDescription,agencyContactNumber,agencyLocation;
+    public static String agencyID,agencyCaption,agencyDescription,agencyContactNumber,agencyLocation,agencyAvailability;
 
     public AgencyAdapter(List<AgencyDO> agencyList, Context context) {
         this.agencyList = agencyList;
@@ -67,6 +67,12 @@ public class AgencyAdapter extends RecyclerView.Adapter<AgencyAdapter.ViewHolder
                     agencyLocation = "No location yet";
                 }else{
                     agencyLocation = agencyDO.getAgencyLocation();
+                }
+
+                if("".equals(agencyDO.getAgencyAvailability())){
+                    agencyAvailability = "Availability not specified.";
+                }else {
+                    agencyAvailability = agencyDO.getAgencyAvailability();
                 }
 
                 view.getContext().startActivity(new Intent(view.getContext(), ViewSpecificAgencyActivity.class));

@@ -52,7 +52,7 @@ public class SignUpActivity extends AppCompatActivity {
     @InjectView(R.id.btnGoToLoginPage) TextView btnGoToLoginPage;
 
     UserBean user = new UserBean();
-    private int mYear, mMonth, mDay, mHour, mMinute;
+    private int mYear, mMonth, mDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

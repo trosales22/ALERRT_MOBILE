@@ -1,9 +1,9 @@
 package com.capstone.alerrt_app.classes.data_objects;
 
 public class AgencyDO {
-    private String agencyID,agencyCaption,agencyDescription,agencyContactNumber,agencyLocation,agencyStatus,agencyImage;
+    private String agencyID,agencyCaption,agencyDescription,agencyContactNumber,agencyLocation,agencyStatus,agencyImage,agencyAvailability;
 
-    public AgencyDO(String agencyID, String agencyCaption, String agencyDescription, String agencyContactNumber, String agencyLocation, String agencyStatus, String agencyImage) {
+    public AgencyDO(String agencyID, String agencyCaption, String agencyDescription, String agencyContactNumber, String agencyLocation, String agencyStatus, String agencyImage, String agencyAvailability) {
         this.agencyID = agencyID;
         this.agencyCaption = agencyCaption;
         this.agencyDescription = agencyDescription;
@@ -11,6 +11,7 @@ public class AgencyDO {
         this.agencyLocation = agencyLocation;
         this.agencyStatus = agencyStatus;
         this.agencyImage = agencyImage;
+        this.agencyAvailability = agencyAvailability;
     }
 
     public String getAgencyID() {
@@ -39,5 +40,9 @@ public class AgencyDO {
 
     public String getAgencyImage() {
         return agencyImage;
+    }
+
+    public String getAgencyAvailability() {
+        return agencyAvailability;
     }
 }

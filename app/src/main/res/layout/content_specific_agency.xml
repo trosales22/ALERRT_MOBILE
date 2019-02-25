@@ -53,6 +53,18 @@
         android:text="Sample Location"
         android:layout_below="@id/lblAgencyContactNumber"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblAgencyAvailability"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:drawableLeft="@drawable/ic_availability_black"
+        android:drawablePadding="10dp"
+        android:text="Sample Availability"
+        android:layout_below="@id/lblAgencyLocation"/>
+
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/btnReportNow"
         android:layout_width="match_parent"

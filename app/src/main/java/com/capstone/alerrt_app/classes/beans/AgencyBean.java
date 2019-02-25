@@ -1,7 +1,7 @@
 package com.capstone.alerrt_app.classes.beans;
 
 public class AgencyBean {
-    private String agencyID,agencyCaption,agencyDescription,agencyContactNumber,agencyLocation,agencyStatus,agencyImage;
+    private String agencyID,agencyCaption,agencyDescription,agencyContactNumber,agencyLocation,agencyStatus,agencyImage,agencyAvailability;
 
     public String getAgencyID() {
         return agencyID;
@@ -57,5 +57,13 @@ public class AgencyBean {
 
     public void setAgencyImage(String agencyImage) {
         this.agencyImage = agencyImage;
+    }
+
+    public String getAgencyAvailability() {
+        return agencyAvailability;
+    }
+
+    public void setAgencyAvailability(String agencyAvailability) {
+        this.agencyAvailability = agencyAvailability;
     }
 }

@@ -21,6 +21,7 @@ public class ViewSpecificAgencyActivity extends AppCompatActivity {
     @InjectView(R.id.lblAgencyDescription) TextView lblAgencyDescription;
     @InjectView(R.id.lblAgencyContactNumber) TextView lblAgencyContactNumber;
     @InjectView(R.id.lblAgencyLocation) TextView lblAgencyLocation;
+    @InjectView(R.id.lblAgencyAvailability) TextView lblAgencyAvailability;
     @InjectView(R.id.btnReportNow) AppCompatButton btnReportNow;
 
     @Override
@@ -39,6 +40,7 @@ public class ViewSpecificAgencyActivity extends AppCompatActivity {
         lblAgencyDescription.setText(AgencyAdapter.agencyDescription);
         lblAgencyContactNumber.setText(AgencyAdapter.agencyContactNumber.replaceAll(",","\n"));
         lblAgencyLocation.setText(AgencyAdapter.agencyLocation);
+        lblAgencyAvailability.setText(AgencyAdapter.agencyAvailability);
 
         btnReportNow.setOnClickListener(new View.OnClickListener() {
             @Override

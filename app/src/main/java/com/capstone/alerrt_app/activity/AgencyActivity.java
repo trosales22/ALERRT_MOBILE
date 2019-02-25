@@ -122,6 +122,7 @@ public class AgencyActivity extends AppCompatActivity {
                                         agencyBean.setAgencyLocation(agencyObject.getString("AgencyLocation"));
                                         agencyBean.setAgencyStatus(agencyObject.getString("AgencyStatus"));
                                         agencyBean.setAgencyImage(agencyObject.getString("AgencyImage"));
+                                        agencyBean.setAgencyAvailability(agencyObject.getString("AgencyAvailability"));
 
                                         AgencyDO agencyDO = new AgencyDO(
                                                 agencyBean.getAgencyID(),
@@ -130,7 +131,8 @@ public class AgencyActivity extends AppCompatActivity {
                                                 agencyBean.getAgencyContactNumber(),
                                                 agencyBean.getAgencyLocation(),
                                                 agencyBean.getAgencyStatus(),
-                                                agencyBean.getAgencyImage()
+                                                agencyBean.getAgencyImage(),
+                                                agencyBean.getAgencyAvailability()
                                         );
 
                                         agencyDOList.add(agencyDO);
