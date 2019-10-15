@@ -1,4 +1,4 @@
-# ALERRT_MOBILE
+# ALERRT MOBILE APP
 PROJECT NAME:
 App-Manila Local Emergency Reporting and Response Tool (ALERRT)
 
@@ -11,6 +11,3 @@ allow concerned government sector to act based on reported scenario and citizen 
 
 TECHNOLOGY USED:
 Android-Java, XML, JSON, PHP/MySQL, CSS, JavaScript/jQuery, Google Maps API, CanvasJS
-
-LINK:
-http://alerrt.x10.mx/ALERRT/web_based/login/index.php
